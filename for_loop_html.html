@@ -1,0 +1,72 @@
+<script>
+
+function return_all_for_loop_elements()
+	{
+	return document.querySelectorAll("for");
+	}
+
+
+function evaluate_for_loop_element(target_for_element)
+	{
+	if (target_for_element.getAttribute("is_done") == "true")
+		{
+		return;
+		}
+	let iter_var_name = target_for_element.getAttribute("iter_var");
+	let in_literal = target_for_element.getAttribute("in");
+	let in_literal_evaled = eval(in_literal);
+	let inner_html = target_for_element.innerHTML;
+	target_for_element.innerHTML = "";
+	for (let i of in_literal_evaled)
+		{
+		target_for_element.innerHTML += inner_html.replaceAll(iter_var_name, i);
+		}
+
+	target_for_element.setAttribute("is_done", "true");
+	}
+
+
+
+function evaluate_all_for_loop_elements()
+	{
+	let index = 0;
+	while (1)
+		{
+		let element = return_all_for_loop_elements()[index];
+		if (index == undefined)
+			{
+			break;
+			}
+		console.log(document.querySelectorAll("for"))
+		evaluate_for_loop_element(element);
+		index++;
+		}
+	
+	}
+
+</script>
+
+
+
+
+<h1>people who commited crimes againts humanity</h1>
+<for iter_var="i0" in="['taha','nima','soul']">
+	<h1> CRIMINAL : i0 </h1>
+	<h2> CRIMES: </h2>
+	<for iter_var="i1" in="['using inline style','using anon funcs',]">
+			<h3>
+				 + i1
+			</h3>
+	</for>
+	<h1>----</h1>
+</for>
+
+
+
+
+
+
+
+<script>
+evaluate_all_for_loop_elements();
+</script>
