@@ -1,3 +1,61 @@
+<style>
+
+
+*
+	{
+	font-family: monospace;
+	color: wheat;
+	}
+
+
+body
+	{
+	background: #262626;
+	}
+
+
+.list_of_lang
+	{
+	display: flex;
+	flex-direction: column;
+	padding-left: 6vw;
+
+	}
+
+
+
+button
+	{
+	background-color: transparent;
+	border-radius: 15px;
+
+	border-style: solid;
+
+	border-color: wheat;
+
+	padding: 2vh;
+	}
+
+.innerlist
+	{
+
+
+
+	display: flex;
+	flex-direction: column;
+	gap:1vh;
+	}
+
+
+.lang_icon
+	{
+	height: 50px;
+	width: 50px;
+	}
+
+</style>
+
+
 <script>
 
 function return_all_for_loop_elements()
@@ -19,7 +77,7 @@ function evaluate_for_loop_element(target_for_element)
 	target_for_element.innerHTML = "";
 	for (let i of in_literal_evaled)
 		{
-		target_for_element.innerHTML += inner_html.replaceAll(iter_var_name, i);
+		target_for_element.innerHTML += inner_html.replaceAll("${"+iter_var_name+"}", i);
 		}
 
 	target_for_element.setAttribute("is_done", "true");
@@ -44,21 +102,27 @@ function evaluate_all_for_loop_elements()
 	
 	}
 
+
 </script>
 
 
 
 
-<h1>people who commited crimes againts humanity</h1>
-<for iter_var="i0" in="['taha','nima','soul']">
-	<h1> CRIMINAL : i0 </h1>
-	<h2> CRIMES: </h2>
-	<for iter_var="i1" in="['using inline style','using anon funcs',]">
-			<h3>
-				 + i1
-			</h3>
+
+<h1>Front end Web Frameworks:</h1>
+
+<for iter_var="i1" in="['c++', 'c', 'nasm',]" class="list_of_lang">
+
+	<h1 class="innerlist"> ${i1}
+
+	<img class="lang_icon" src="./${i1}.png">
+
+	<for iter_var="j1" in="['road map', 'docs', 'excercises']" >
+		<button> ${j1} of ${i1} </button>
 	</for>
-	<h1>----</h1>
+
+	</h1>
+
 </for>
 
 
@@ -69,4 +133,5 @@ function evaluate_all_for_loop_elements()
 
 <script>
 evaluate_all_for_loop_elements();
+
 </script>
